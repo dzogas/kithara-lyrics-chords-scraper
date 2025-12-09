@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="el">
 <head>
-  <title>Kithara Scraper</title>
+  <meta charset="UTF-8">
+  <title>Kithara Lyrics & Chords Scraper</title>
   <style>
-    #status {
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      width: 300px;
+    }
+    button {
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+    }
+    #output {
       margin-top: 10px;
-      font-weight: bold;
+      white-space: pre-wrap;
+      font-size: 12px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      background: #f9f9f9;
+    }
+    #status {
+      margin-top: 5px;
+      font-size: 11px;
       color: green;
     }
   </style>
 </head>
 <body>
-  <button id="scrapeBtn">Scrape Lyrics & Chords</button>
-  <button id="downloadBtn" disabled>Download as ChordPro</button>
-  <h3>Output:</h3>
-  <pre id="output"></pre>
+  <!-- ✅ Ελληνικές ετικέτες κουμπιών -->
+  <button id="scrapeBtn">Αντιγραφή Στίχων/Ακκόρντων</button>
+  <button id="downloadBtn" disabled>Λήψη ως ChordPro</button>
+
+  <div id="output"></div>
   <div id="status"></div>
+
   <script src="popup.js"></script>
 </body>
 </html>

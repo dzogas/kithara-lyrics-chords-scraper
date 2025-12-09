@@ -47,7 +47,7 @@ function mergeChordLyric(chordLine, lyricLine) {
   return result;
 }
 
-// Metadata with graceful fallback (no external APIs)
+// Metadata with graceful fallback
 function fetchMetadata(scrapedKey) {
   const key = scrapedKey || "Unknown";
   const time = "4/4";
@@ -61,11 +61,20 @@ let lastArtist = "";
 
 document.getElementById("scrapeBtn").addEventListener("click", () => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const tab = tabs[0];
+
+    // ✅ Έλεγχος αν είμαστε στο kithara.to
+    if (!tab.url || !tab.url.includes("kithara.to")) {
+      document.getElementById("output").textContent =
+        "⚠️ Αυτή η επέκταση λειτουργεί μόνο σε σελίδες τραγουδιών του kithara.to.";
+      return;
+    }
+
     chrome.scripting.executeScript({
-      target: { tabId: tabs[0].id },
+      target: { tabId: tab.id },
       files: ["content.js"]
     }, () => {
-      chrome.tabs.sendMessage(tabs[0].id, { action: "scrape" }, (response) => {
+      chrome.tabs.sendMessage(tab.id, { action: "scrape" }, (response) => {
         if (response) {
           lastTitle = response.title;
           lastArtist = response.artist;
@@ -100,13 +109,13 @@ document.getElementById("scrapeBtn").addEventListener("click", () => {
           document.getElementById("downloadBtn").disabled = false;
 
           navigator.clipboard.writeText(lastChordPro).then(() => {
-            document.getElementById("status").textContent = "✅ Copied to clipboard!";
+            document.getElementById("status").textContent = "✅ Αντιγράφηκε στο πρόχειρο!";
           }).catch(err => {
-            document.getElementById("status").textContent = "❌ Clipboard copy failed.";
+            document.getElementById("status").textContent = "❌ Η αντιγραφή απέτυχε.";
             console.error("Clipboard copy failed:", err);
           });
         } else {
-          document.getElementById("output").textContent = "No lyrics/chords found.";
+          document.getElementById("output").textContent = "Δεν βρέθηκαν στίχοι/ακκόρντα.";
         }
       });
     });
@@ -115,8 +124,13 @@ document.getElementById("scrapeBtn").addEventListener("click", () => {
 
 document.getElementById("downloadBtn").addEventListener("click", () => {
   if (lastChordPro) {
-    const safeTitle = lastTitle.replace(/[^\w\s-]/g, "");
-    const safeArtist = lastArtist.replace(/[^\w\s-]/g, "");
+    // ✅ Επιτρέπουμε ελληνικούς χαρακτήρες στο όνομα αρχείου
+    let safeTitle = lastTitle.replace(/[^\w\s\-\u0370-\u03FF\u1F00-\u1FFF]/g, "").trim();
+    let safeArtist = lastArtist.replace(/[^\w\s\-\u0370-\u03FF\u1F00-\u1FFF]/g, "").trim();
+
+    if (!safeTitle) safeTitle = "Άγνωστος Τίτλος";
+    if (!safeArtist) safeArtist = "Άγνωστος Καλλιτέχνης";
+
     const filename = `${safeArtist} - ${safeTitle}.cho`;
     downloadFile(filename, lastChordPro);
   }
