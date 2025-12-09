@@ -1,77 +1,75 @@
 # Kithara Lyrics & Chords Scraper 🎸
 
-A Chrome extension that scrapes lyrics and chords from [kithara.to](https://kithara.to) song pages and exports them into **ChordPro format**.  
-Perfect for importing into Songbook Pro or other chord sheet apps.
+Μια επέκταση Chrome που εξάγει στίχους και ακκόρντα από σελίδες τραγουδιών στο [kithara.to](https://kithara.to) και τα μετατρέπει σε **μορφή ChordPro**.  
+Ιδανικό για εισαγωγή στο Songbook Pro ή σε άλλες εφαρμογές με φύλλα ακκόρντων.
 
 ---
 
-## ✨ Features
-- Scrapes **title, artist, key, lyrics, chords, and empty lines**
-- Converts directly to **ChordPro format**
-- Copies result to **clipboard automatically**
-- Download as `.cho` file with proper naming
-- Custom **icons, banner, and favicon** for a professional look
+## ✨ Δυνατότητες
+- Εξάγει **τίτλο, καλλιτέχνη, τονικότητα, στίχους, ακκόρντα και κενές γραμμές**
+- Μετατρέπει απευθείας σε **μορφή ChordPro**
+- Αντιγράφει το αποτέλεσμα **αυτόματα στο πρόχειρο**
+- Κατεβάζει ως αρχείο `.cho` με σωστή ονομασία
+- Προσαρμοσμένα **εικονίδια, banner και favicon** για επαγγελματική εμφάνιση
 
 ---
 
-## 📦 Installation (Developer Mode)
-1. Clone or download this repository.
-2. Open Chrome and go to `chrome://extensions/`.
-3. Enable **Developer mode** (toggle in the top right).
-4. Click **Load unpacked** and select the project folder.
-5. Pin the extension to your toolbar for easy access.
+## 📦 Εγκατάσταση (Λειτουργία Προγραμματιστή)
+1. Κάνε clone ή κατέβασε αυτό το αποθετήριο.
+2. Άνοιξε τον Chrome και πήγαινε στο `chrome://extensions/`.
+3. Ενεργοποίησε τη **Λειτουργία προγραμματιστή** (διακόπτης πάνω δεξιά).
+4. Κάνε κλικ στο **Load unpacked** και επίλεξε τον φάκελο του project.
+5. Κάρφωσε την επέκταση στη γραμμή εργαλείων για εύκολη πρόσβαση.
 
 ---
 
-## 🔑 Permissions
-- **activeTab**: Needed to access the current kithara.to page when scraping.
-- **scripting**: Used to inject the content script into the active tab.
+## 🔑 Δικαιώματα
+- **activeTab**: Απαραίτητο για πρόσβαση στην τρέχουσα σελίδα του kithara.to κατά την εξαγωγή.
+- **scripting**: Χρησιμοποιείται για την εισαγωγή του content script στην ενεργή καρτέλα.
 
 ---
 
-## 🔒 Privacy
-This extension does **not** collect, store, or transmit any personal data.  
-It only reads the current kithara.to page when you click **Scrape Lyrics & Chords**.  
-No information is shared with third parties.
+## 🔒 Απόρρητο
+Αυτή η επέκταση **δεν** συλλέγει, αποθηκεύει ή μεταδίδει προσωπικά δεδομένα.  
+Διαβάζει μόνο την τρέχουσα σελίδα του kithara.to όταν κάνεις κλικ στο **Αντιγραφή Στίχων/Ακκόρντων**.  
+Καμία πληροφορία δεν κοινοποιείται σε τρίτους.
 
 ---
 
-## 📂 Project Structure
+## 📂 Δομή Project
 kithara-lyrics-chords-scraper/
-├── manifest.json
-├── content.js
-├── popup.html
-├── popup.js
-├── icons/
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
-├── banner.png        (optional, for branding)
-├── favicon.png       (optional)
-└── README.md
-
+├── manifest.json  
+├── content.js  
+├── popup.html  
+├── popup.js  
+├── icons/  
+│   ├── icon16.png  
+│   ├── icon48.png  
+│   └── icon128.png  
+├── banner.png        (προαιρετικό, για branding)  
+├── favicon.png       (προαιρετικό)  
+└── README.md  
 
 ---
 
 ## 🖼️ Branding
-- **Icons**: Guitar + chord grid in light, dark, and color variants
-- **Banner**: Extension name with guitar/chord logo
-- **Favicon**: Matching mini icon for popup tab
+- **Εικονίδια**: Κιθάρα + πλέγμα ακκόρντων σε ανοιχτό, σκούρο και έγχρωμο στυλ
+- **Banner**: Όνομα επέκτασης με λογότυπο κιθάρας/ακκόρντων
+- **Favicon**: Αντίστοιχο μικρό εικονίδιο για το popup tab
 
 ---
 
-## 🚀 Roadmap
-- Publish to Chrome Web Store
+## 🚀 Οδικός Χάρτης
+- Δημοσίευση στο Chrome Web Store
 
 ---
 
-## 📜 License
-MIT License — free to use, modify, and share.  
-See [LICENSE](LICENSE) for details.
+## 📜 Άδεια
+Άδεια MIT — ελεύθερη χρήση, τροποποίηση και διανομή.  
+Δες το αρχείο [LICENSE](LICENSE) για λεπτομέρειες.
 
 ---
 
 ## 🙌 Credits
-Created by **Dionysios**  
-Icons, banner, and favicon designed with Copilot assistance.
-
+Δημιουργήθηκε από τον **Διονύσιο**  
+Εικονίδια, banner και favicon σχεδιάστηκαν με τη βοήθεια του Copilot.
